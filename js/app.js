@@ -49,12 +49,13 @@ angular.module('starter', ['ionic', 'starter.controllers'])
         }
       }
     })
+
     .state('app.telaPrincipal', {
       url: '/telaPrincipal',
       views: {
         'menuContent': {
           templateUrl: 'templates/telaPrincipal.html',
-          controller: 'PlaylistsCtrl'
+          controller: 'ControllerPrincipal'
         }
       }
     });

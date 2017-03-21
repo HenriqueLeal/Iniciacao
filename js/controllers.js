@@ -9,9 +9,6 @@ angular.module('starter.controllers', [])
     //$scope.$on('$ionicView.enter', function(e) {
     //});
 
-    // Form data for the login modal
-    $scope.loginData = {};
-
       // An alert dialog
         $scope.showAlert = function () {
           var alertPopup = $ionicPopup.alert({
@@ -23,46 +20,49 @@ angular.module('starter.controllers', [])
         type: 'button-royal'}]
         }) };
       
-
-      // Create the login modal that we will use later
-      $ionicModal.fromTemplateUrl('templates/newUser.html', {
+      $ionicModal.fromTemplateUrl("templates/newUser.html", {
         scope: $scope
       }).then(function (modal) {
         $scope.modal = modal;
       });
 
-      // Triggered in the login modal to close it
+      $ionicModal.fromTemplateUrl("templates/newCarro.html", {
+        scope: $scope
+      }).then(function (modalCarro) {
+        $scope.modalCarro = modalCarro;
+      });
+
       $scope.closeLogin = function () {
         $scope.modal.hide();
       };
+      
+      $scope.closeCarro = function () {
+        $scope.modalCarro.hide();
+      };
 
-      // Open the login modal
       $scope.login = function () {
         $scope.modal.show();
       };
 
-      // Perform the login action when the user submits the login form
-      $scope.doLogin = function () {
-        console.log('Doing login', $scope.loginData);
+      $scope.newCarro = function(){
+        $scope.modalCarro.show();
+      }
 
-        // Simulate a login delay. Remove this and replace with your login
-        // code if using a login system
+
+      $scope.doLogin = function () {
         $timeout(function () {
           $scope.closeLogin();
-        }, 1000);
+        }, 200);
+      };
+
+      $scope.doCarro = function () {
+        $timeout(function () {
+          $scope.closeCarro();
+        }, 200);
       };
     })
 
-  .controller('PlaylistsCtrl', function ($scope) {
-    $scope.playlists = [
-      { title: 'Reggae', id: 1 },
-      { title: 'Chill', id: 2 },
-      { title: 'Dubstep', id: 3 },
-      { title: 'Indie', id: 4 },
-      { title: 'Rap', id: 5 },
-      { title: 'Cowbell', id: 6 }
-    ];
+  .controller('ControllerPrincipal', function ($scope) {
   })
 
-  .controller('PlaylistCtrl', function ($scope, $stateParams) {
-  });
+ 
