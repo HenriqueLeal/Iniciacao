@@ -1,0 +1,73 @@
+html, body{
+    height: 100%;
+    min-height: 100%;
+}
+body, #telaprincipal, #search, #liberar{
+    background-color: #F2F1EF;
+}
+.labelindex{
+    color: green;
+}
+form{
+    widows: 100%;
+}
+.menulateral{
+    background-color: #6F2175;
+    color: white;
+}
+.listamenu{
+    background-color: #40184A;
+}
+@font-face{
+    font-family: "Dense-Regular";
+    src: url("Dense-Regular.otf");
+}
+#imgcheck{
+    position: relative;
+    left: 43%;
+    margin-top: 3%;
+}
+#divimg, #divfatec, #btnindex, #imgindex, #botoescad, #btnLiberar, #usuarioliberado{
+    width: 100%;
+    display: -ms-flex;
+    display: -webkit-flex;
+    display: flex;
+    -ms-justify-content: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+}
+#usuarioliberado{
+    padding-top: 20px;
+}
+#btnLiberar{
+    margin-top: 10px;
+}
+#imagem2{
+    position: relative;
+    margin-top: 40px;
+    opacity: 0.8;
+    max-width: 256px;   /* Máximo da largura da imagem */
+    width: 100%;
+    max-height: 256px;  /* Máximo da altura da imagem */
+    min-height: auto;      /* Mínimo da altura, por padrão “auto” */
+    background-size:100%;
+    background-repeat: no-repeat;
+}
+#fatecgarca{
+    color: #95a5a6;
+    font-size: 4em;
+    font-family: "Dense-Regular";
+    font-style: bold;
+    text-shadow: -1px -1px 1px black, 1px 1px 1px #333;
+    opacity: 0.15;
+}
+#submit{
+    width: 120px;
+}
+#imagem{
+    position: relative;
+    margin-top: 80px;
+}
+.itembtnlogin{
+    border: 0px;
+}

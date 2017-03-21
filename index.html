@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+  <title></title>
+
+  <link rel="manifest" href="manifest.json">
+  <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+  <script src="lib/ionic/js/ionic.bundle.js"></script>
+  <script src="cordova.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/controllers.js"></script>
+  <script src="js/jquery.js"></script>
+  <script src="js/jquery-ui.js"></script>
+</head>
+
+<body ng-app="starter">
+
+<!--<script>
+$( document ).click(function() {
+  $( "#toggle" ).effect( "shake" );
+});
+</script> !-->
+
+  <div class="bar bar-header bar-balanced">
+    <h1 class="title">Estacionamento Inteligente</h1>
+  </div>
+
+  <div id="imgindex">
+    <img id="imagem" src="img/sports-car.png" />
+  </div>
+
+  <form action="principal.html">
+    <div class="list">
+      <label class="item item-input item-floating-label">
+    <span class="input-label labelindex">USUÁRIO</span>
+    <input type="text" placeholder="USUÁRIO">
+  </label>
+      <label class="item item-input item-floating-label">
+    <span class="input-label labelindex">SENHA</span>
+    <input type="password" placeholder="SENHA">
+  </label>
+    </div>
+
+   <div id="btnindex">
+     <input type="submit" class="button button-balanced" id="submit"> 
+   </div>
+  </form>
+
+</body>
+
+</html>
