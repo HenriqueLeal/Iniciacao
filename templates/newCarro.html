@@ -8,29 +8,32 @@
     <form ng-submit="doCarro()">
       <div class="list">
         <label class="item item-input">
-          <span class="input-label">Nome Completo</span>
+          <span class="input-label">Placa</span>
           <input type="text">
         </label>
         <label class="item item-input">
-          <span class="input-label">CPF</span>
+          <span class="input-label">Modelo</span>
           <input type="text">
         </label>
-        <label class="item item-input">
-          <span class="input-label">Telefone</span>
-          <input type="tel">
-        </label>
-        <label class="item item-input">
-          <span class="input-label">E-mail</span>
-          <input type="email">
-        </label>
+        
+        <div class="list">
+          <label class="item item-input item-select">
+            <div class="input-label">
+               Motorista
+            </div>
+            <select>
+               <option>Henrique Leal</option>
+               <option selected>João Cardia</option>
+               <option>Breno</option>
+            </select>
+           </label>
+        </div>
+
       </div>
 
-      <div id="botoescad">
-        <label class="itembtnlogin">
-          <button class="button button-clear button-balanced" type="submit" id="btnInserir">Cadastrar</button>
-          <button class="button button-clear button-assertive" type="submit" id="btnInserir">Cancelar</button>
-        </label>
-        </div>
+      <button class="button button-full button-balanced" type="submit">Salvar</button>
+      <button class="button button-full button-assertive" type="submit">Cancelar</button>
+
     </form>
   </ion-content>
 </ion-modal-view>
