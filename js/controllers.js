@@ -1,6 +1,6 @@
 angular.module('starter.controllers', [])
 
-  .controller('AppCtrl', function ($scope, $ionicModal, $timeout, $ionicPopup) {
+  .controller('AppCtrl', function ($scope, $ionicModal, $timeout, $ionicPopup, $http) {
 
     $scope.showAlert = function () {
       var alertPopup = $ionicPopup.alert({
@@ -57,6 +57,14 @@ angular.module('starter.controllers', [])
 
 
     $scope.doLogin = function () {
+     $http.post("insertUser.php", {
+       "codigo":$scope.codigo, 
+       "nome":$scope.nome, 
+       "cpf":$scope.cpf,
+       "telefone":$scope.telefone,
+       "email":$scope.email
+     })
+
       $timeout(function () {
         $scope.closeLogin();
       }, 200);
