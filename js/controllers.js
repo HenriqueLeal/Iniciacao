@@ -57,7 +57,7 @@ angular.module('starter.controllers', [])
 
 
     $scope.doLogin = function () {
-     $http.post("insertUser.php", {
+     $http.post("http://localhost/EstacionamentoInteligente/www/site/insertUser.php", {
        "codigo":$scope.codigo, 
        "nome":$scope.nome, 
        "cpf":$scope.cpf,
