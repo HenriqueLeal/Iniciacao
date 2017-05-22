@@ -1,6 +1,8 @@
 angular.module('starter.controllers', [])
 
-  .controller('AppCtrl', function ($scope, $ionicModal, $timeout, $ionicPopup, $http) {
+  .controller('AppCtrl', function ($scope, $stateParams, $state, $ionicModal, $timeout, $ionicPopup, $http) {
+//.controller('AppCtrl',['$scope', '$stateParams', '$state', '$http', '$ionicModal', '$timeout', '$ionicPopup', 
+  //          function($scope, $stateParams, $state, $http, $ionicModal, $ionicPopup, $timeout){
 
     $scope.showAlert = function () {
       var alertPopup = $ionicPopup.alert({
@@ -57,12 +59,16 @@ angular.module('starter.controllers', [])
 
 
     $scope.doLogin = function () {
-     $http.post("http://localhost/EstacionamentoInteligente/www/site/insertUser.php", {
-       "codigo":$scope.codigo, 
-       "nome":$scope.nome, 
-       "cpf":$scope.cpf,
-       "telefone":$scope.telefone,
-       "email":$scope.email
+     $http({
+       url: "http://localhost/EstacionamentoInteligente/www/site/insertUser.php",
+       method: "POST",
+       data:{
+        "codigo":$scope.codigo, 
+        "nome":$scope.nome, 
+        "cpf":$scope.cpf,
+        "telefone":$scope.telefone,
+        "email":$scope.email
+       }
      })
 
       $timeout(function () {
