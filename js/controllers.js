@@ -57,19 +57,46 @@ angular.module('starter.controllers', [])
       $scope.modalCarro.show();
     }
 
+   $scope.User = {};
+
+   $scope.teste = function () {
+  console.log("User logged in with membership no: " + $scope.User.nome +
+  "\n and password: " + $scope.User.email);
+ }
+
+      // $scope.codigo = null;
+       // $scope.nome = null; 
+     //   $scope.cpf = null;
+     //   $scope.telefone = null;
+     //   $scope.email = null;
 
     $scope.doLogin = function () {
+      $scope.User.codigo = 1;
+
+      console.log($scope.User.codigo);
+      console.log($scope.User.nome);
+      console.log($scope.User.cpf);
+      console.log($scope.User.telefone);
+      console.log($scope.User.email);
+
+     $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
      $http({
        url: "http://localhost/EstacionamentoInteligente/www/site/insertUser.php",
        method: "POST",
        data:{
-        "codigo":$scope.codigo, 
-        "nome":$scope.nome, 
-        "cpf":$scope.cpf,
-        "telefone":$scope.telefone,
-        "email":$scope.email
+        "codigo":$scope.User.codigo, 
+        "nome":$scope.User.nome, 
+        "cpf":$scope.User.cpf,
+        "telefone":$scope.User.telefone,
+        "email":$scope.User.email
        }
-     })
+     }).
+        success(function(response) {
+            $scope.codeStatus = response.data;
+        }).
+        error(function(response) {
+            $scope.codeStatus = response || "Request failed";
+        }); 
 
       $timeout(function () {
         $scope.closeLogin();

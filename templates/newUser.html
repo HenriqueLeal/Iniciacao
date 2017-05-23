@@ -5,27 +5,27 @@
   </ion-header-bar>
 
   <ion-content>
-    <form method="POST" action="C:\wamp64\www\EstacionamentoInteligente\www\site\insertUser.php">
+    <form>
       <div class="list">
         <label class="item item-input">
           <span class="input-label">Nome Completo</span>
-          <input type="text" ng-model="nome">
+          <input type="text" ng-model="User.nome">
         </label>
         <label class="item item-input">
           <span class="input-label">CPF</span>
-          <input type="number" ng-model="cpf">
+          <input type="number" ng-model="User.cpf">
         </label>
         <label class="item item-input">
           <span class="input-label">Telefone</span>
-          <input type="number" ng-model="telefone">
+          <input type="number" ng-model="User.telefone">
         </label>
         <label class="item item-input">
           <span class="input-label">E-mail</span>
-          <input type="email" ng-model="email">
+          <input type="email" ng-model="User.email">
         </label>
       </div>
 
-      <button class="button button-full button-royal" type="submit">Salvar</button>
+      <button class="button button-full button-royal" type="submit" ng-click="doLogin()">Salvar</button>
     </form>
   </ion-content>
 </ion-modal-view>

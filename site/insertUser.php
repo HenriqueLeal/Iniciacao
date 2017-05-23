@@ -9,7 +9,11 @@
     header("Access-Control-Allow-Methods: POST, GET, OPTIONS");
     header("Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With");
 
-    $postdata = file_get_contents("php://input");
+   $teste = $_POST['password'];
+
+   echo "<script> console.log($teste) </script>"
+
+   /* $postdata = file_get_contents("php://input");
     $request  = json_decode($postdata);
     $nome     = $request->nome;
     $cpf      = $request->cpf;
@@ -20,15 +24,16 @@
     $codigo = 1;
     $tipousuario = 1;
 
+   echo"<script>console.log('entrou')</script>";
 
-  include "connectdb.php";
+   include "connectdb.php";
 
     $sql = "INSERT INTO USUARIO VALUES ('$codigo', '$tipousuario', '$nome', '$cpf' , '$telefone', '$email');" ;
     if(mysqli_query($conn, $sql)){
-      echo "Add successfully\n";
+      echo "Cadastrado\n";
     }else{
-      die('Could not edit data');
-    }
+      die('Erro ao cadastrar');
+    }*/
   
   // header('Content-type: application/json');
   // header('Access-Control-Allow-Origin: *');
