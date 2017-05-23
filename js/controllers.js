@@ -83,6 +83,7 @@ angular.module('starter.controllers', [])
      $http({
        url: "http://localhost/EstacionamentoInteligente/www/site/insertUser.php",
        method: "POST",
+       headers: "application/x-www-form-urlencoded; charset=UTF-8", 
        data:{
         "codigo":$scope.User.codigo, 
         "nome":$scope.User.nome, 

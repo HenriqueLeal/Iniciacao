@@ -9,11 +9,8 @@
     header("Access-Control-Allow-Methods: POST, GET, OPTIONS");
     header("Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With");
 
-   $teste = $_POST['password'];
 
-   echo "<script> console.log($teste) </script>"
-
-   /* $postdata = file_get_contents("php://input");
+    $postdata = file_get_contents("php://input");
     $request  = json_decode($postdata);
     $nome     = $request->nome;
     $cpf      = $request->cpf;
@@ -24,17 +21,23 @@
     $codigo = 1;
     $tipousuario = 1;
 
-   echo"<script>console.log('entrou')</script>";
+    //include "connectdb.php";
 
-   include "connectdb.php";
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "estacionamentointeligente";
+
+    $conn = new mysqli($servername, $username, $password, $dbname);
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
 
     $sql = "INSERT INTO USUARIO VALUES ('$codigo', '$tipousuario', '$nome', '$cpf' , '$telefone', '$email');" ;
+
     if(mysqli_query($conn, $sql)){
       echo "Cadastrado\n";
     }else{
       die('Erro ao cadastrar');
-    }*/
-  
-  // header('Content-type: application/json');
-  // header('Access-Control-Allow-Origin: *');
+    }
 ?>
