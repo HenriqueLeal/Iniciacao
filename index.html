@@ -17,7 +17,7 @@
   <script src="js/jquery-ui.js"></script>
 </head>
 
-<body ng-app="starter">
+<body ng-app="starter" ng-controller="AppCtrl">
 
 <!-- <script>
 $( document ).click(function() {
@@ -33,19 +33,19 @@ $( document ).click(function() {
     <img id="imagem" src="img/sports-car.png" />
   </div>
 
-  <form action="principal.html" id="toggle">
+  <form id="toggle">
     <div class="list" id="toggle">
       <label class="item item-input item-floating-label">
     <span class="input-label labelindex">USUÁRIO</span>
-    <input type="text" placeholder="USUÁRIO">
+    <input type="text" placeholder="USUÁRIO" ng-model="Login.nome" required>
   </label>
       <label class="item item-input item-floating-label">
     <span class="input-label labelindex">SENHA</span>
-    <input type="password" placeholder="SENHA">
+    <input type="password" placeholder="SENHA" ng-model="Login.senha" required>
   </label>
     </div>
 
-     <button class="button button-full button-balanced" type="submit">Entrar</button>
+     <button class="button button-full button-balanced" type="submit" ng-click="validaLogin()">Entrar</button>
   </form>
 
 </body>

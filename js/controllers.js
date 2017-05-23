@@ -57,20 +57,9 @@ angular.module('starter.controllers', [])
       $scope.modalCarro.show();
     }
 
-   $scope.User = {};
+     $scope.User = {};
 
-   $scope.teste = function () {
-  console.log("User logged in with membership no: " + $scope.User.nome +
-  "\n and password: " + $scope.User.email);
- }
-
-      // $scope.codigo = null;
-       // $scope.nome = null; 
-     //   $scope.cpf = null;
-     //   $scope.telefone = null;
-     //   $scope.email = null;
-
-    $scope.doLogin = function () {
+     $scope.doLogin = function () {
       $scope.User.codigo = 1;
 
       console.log($scope.User.codigo);
@@ -109,7 +98,35 @@ angular.module('starter.controllers', [])
         $scope.closeCarro();
       }, 200);
     };
+
+    $scope.Login = {};
+    $scope.validaLogin = function() {
+
+      console.log($scope.Login.senha);
+
+      $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
+      $http({
+       url: "http://localhost/EstacionamentoInteligente/www/site/validaLogin.php",
+       method: "POST",
+       headers: "application/x-www-form-urlencoded; charset=UTF-8", 
+       data:{
+        "nome":$scope.Login.nome, 
+        "senha":$scope.Login.senha
+       }
+     }).
+        success(function(response) {
+            $scope.codeStatus = response.data;
+        }).
+        error(function(response) {
+            $scope.codeStatus = response || "Request failed";
+        }); 
+
+    }
+
+
   })
+
+
 
   .controller('ControllerPrincipal', function ($scope) {
   })
