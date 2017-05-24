@@ -79,6 +79,16 @@ angular.module('starter', ['ionic', 'starter.controllers'])
         }
       }
     })
+
+    .state('app.principal', {
+      url: '/principal',
+      views: {
+        'menuContent': {
+          templateUrl: 'principal.html',
+          controller: 'ControllerPrincipal'
+        }
+      }
+    })
     
   $urlRouterProvider.otherwise('/app/telaPrincipal');
 });

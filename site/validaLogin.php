@@ -14,24 +14,20 @@
         die("Connection failed: " . $conn->connect_error);
     }
 
-    echo "<script> console.log('teste') </script>";
-
     $postdata = file_get_contents("php://input");
     $request  = json_decode($postdata);
     $nome     = $request->nome;
-    $senha      = $request->senha;
+    $senha    = $request->senha;
 
-    $sql = "SELECT * FROM ADMIN WHERE LOGIN = '$nome' AND SENHA = '$senha'" ;
-
-    $result = mysqli_query($conn, $sql);
-    $num_rows = mysql_num_rows(mysqli_query($conn, $sql));
+    $result = mysqli_query($conn , "SELECT * FROM ADMIN WHERE LOGIN = '$nome' AND SENHA = '$senha'" );
+    $num_rows = $result->num_rows;
 
     if ($num_rows > 0) {
-        
+       $result = true;
     }
     else {
-        echo"<script> Alert('Usuario nao encontrado') </script>";
-    }
+        $result = "{'success':false}";
+    }  
 
-
+    echo($result);
 ?>

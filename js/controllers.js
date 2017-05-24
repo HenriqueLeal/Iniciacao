@@ -1,6 +1,6 @@
 angular.module('starter.controllers', [])
 
-  .controller('AppCtrl', function ($scope, $stateParams, $state, $ionicModal, $timeout, $ionicPopup, $http) {
+  .controller('AppCtrl', function ($scope, $stateParams, $state, $ionicModal, $timeout, $ionicPopup, $http, $window) {
 //.controller('AppCtrl',['$scope', '$stateParams', '$state', '$http', '$ionicModal', '$timeout', '$ionicPopup', 
   //          function($scope, $stateParams, $state, $http, $ionicModal, $ionicPopup, $timeout){
 
@@ -41,6 +41,12 @@ angular.module('starter.controllers', [])
       $scope.modalCarro = modalCarro;
     });
 
+  /*  $ionicModal.fromTemplateUrl("principal.html", {
+      scope: $scope
+    }).then(function (modalPrincipal) {
+      $scope.modalPrincipal = modalPrincipal;
+    });*/
+
     $scope.closeLogin = function () {
       $scope.modal.hide();
     };
@@ -49,9 +55,14 @@ angular.module('starter.controllers', [])
       $scope.modalCarro.hide();
     };
 
+
     $scope.login = function () {
       $scope.modal.show();
     };
+
+   //  $scope.showPrincipal = function () {
+  //    $scope.modalPrincipal.show();
+  //  }
 
     $scope.newCarro = function () {
       $scope.modalCarro.show();
@@ -102,8 +113,6 @@ angular.module('starter.controllers', [])
     $scope.Login = {};
     $scope.validaLogin = function() {
 
-      console.log($scope.Login.senha);
-
       $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
       $http({
        url: "http://localhost/EstacionamentoInteligente/www/site/validaLogin.php",
@@ -115,10 +124,15 @@ angular.module('starter.controllers', [])
        }
      }).
         success(function(response) {
+             
             $scope.codeStatus = response.data;
+            console.log(response.data);
+            $window.location.href = '/principal.html';
+           //  $scope.showPrincipal();
         }).
         error(function(response) {
             $scope.codeStatus = response || "Request failed";
+            console.log("nao foi");
         }); 
 
     }
