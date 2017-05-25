@@ -16,7 +16,6 @@
     $cpf      = $request->cpf;
     $telefone = $request->telefone;
     $email    = $request->email;
-    $codigo   = $request->codigo;
 
     $codigo = 1;
     $tipousuario = 1;
@@ -33,11 +32,26 @@
         die("Connection failed: " . $conn->connect_error);
     }
 
+    $sqlID = "SELECT MAX(USUARIO) AS USUARIO FROM USUARIO";
+    $exeSQLID = mysqli_query($conn, $sqlID);
+    $row = mysqli_fetch_assoc($exeSQLID);
+
+    if (isset($row['USUARIO'])){
+       $codigo = $row['USUARIO'] + 1;
+    }
+    else{
+      $codigo = 1;
+    }
+
     $sql = "INSERT INTO USUARIO VALUES ('$codigo', '$tipousuario', '$nome', '$cpf' , '$telefone', '$email');" ;
 
     if(mysqli_query($conn, $sql)){
       echo "Cadastrado\n";
+      $result = true;
     }else{
       die('Erro ao cadastrar');
+      $result = "{'success':false}";
     }
+
+    echo($result);
 ?>

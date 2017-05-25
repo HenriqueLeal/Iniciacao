@@ -1,8 +1,6 @@
 angular.module('starter.controllers', [])
 
   .controller('AppCtrl', function ($scope, $stateParams, $state, $ionicModal, $timeout, $ionicPopup, $http, $window) {
-//.controller('AppCtrl',['$scope', '$stateParams', '$state', '$http', '$ionicModal', '$timeout', '$ionicPopup', 
-  //          function($scope, $stateParams, $state, $http, $ionicModal, $ionicPopup, $timeout){
 
     $scope.showAlert = function () {
       var alertPopup = $ionicPopup.alert({
@@ -41,12 +39,6 @@ angular.module('starter.controllers', [])
       $scope.modalCarro = modalCarro;
     });
 
-  /*  $ionicModal.fromTemplateUrl("principal.html", {
-      scope: $scope
-    }).then(function (modalPrincipal) {
-      $scope.modalPrincipal = modalPrincipal;
-    });*/
-
     $scope.closeLogin = function () {
       $scope.modal.hide();
     };
@@ -55,49 +47,37 @@ angular.module('starter.controllers', [])
       $scope.modalCarro.hide();
     };
 
-
     $scope.login = function () {
       $scope.modal.show();
     };
-
-   //  $scope.showPrincipal = function () {
-  //    $scope.modalPrincipal.show();
-  //  }
 
     $scope.newCarro = function () {
       $scope.modalCarro.show();
     }
 
-     $scope.User = {};
+    $scope.User = {};
 
-     $scope.doLogin = function () {
-      $scope.User.codigo = 1;
+    $scope.doLogin = function () {
 
-      console.log($scope.User.codigo);
-      console.log($scope.User.nome);
-      console.log($scope.User.cpf);
-      console.log($scope.User.telefone);
-      console.log($scope.User.email);
-
-     $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
-     $http({
-       url: "http://localhost/EstacionamentoInteligente/www/site/insertUser.php",
-       method: "POST",
-       headers: "application/x-www-form-urlencoded; charset=UTF-8", 
-       data:{
-        "codigo":$scope.User.codigo, 
-        "nome":$scope.User.nome, 
-        "cpf":$scope.User.cpf,
-        "telefone":$scope.User.telefone,
-        "email":$scope.User.email
-       }
-     }).
-        success(function(response) {
-            $scope.codeStatus = response.data;
+      $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
+      $http({
+        url: "http://localhost/EstacionamentoInteligente/www/site/insertUser.php",
+        method: "POST",
+        headers: "application/x-www-form-urlencoded; charset=UTF-8",
+        data: {
+          "codigo": $scope.User.codigo,
+          "nome": $scope.User.nome,
+          "cpf": $scope.User.cpf,
+          "telefone": $scope.User.telefone,
+          "email": $scope.User.email
+        }
+      }).
+        success(function (response) {
+          $scope.codeStatus = response.data;
         }).
-        error(function(response) {
-            $scope.codeStatus = response || "Request failed";
-        }); 
+        error(function (response) {
+          $scope.codeStatus = response || "Request failed";
+        });
 
       $timeout(function () {
         $scope.closeLogin();
@@ -111,29 +91,36 @@ angular.module('starter.controllers', [])
     };
 
     $scope.Login = {};
-    $scope.validaLogin = function() {
+    $scope.validaLogin = function () {
 
       $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
       $http({
-       url: "http://localhost/EstacionamentoInteligente/www/site/validaLogin.php",
-       method: "POST",
-       headers: "application/x-www-form-urlencoded; charset=UTF-8", 
-       data:{
-        "nome":$scope.Login.nome, 
-        "senha":$scope.Login.senha
-       }
-     }).
-        success(function(response) {
-             
-            $scope.codeStatus = response.data;
-            console.log(response.data);
-            $window.location.href = '/principal.html';
-           //  $scope.showPrincipal();
+        url: "http://localhost/EstacionamentoInteligente/www/site/validaLogin.php",
+        method: "POST",
+        headers: "application/x-www-form-urlencoded; charset=UTF-8",
+        data: {
+          "nome": $scope.Login.nome,
+          "senha": $scope.Login.senha
+        }
+      }).
+        success(function (response) {
+
+          $scope.codeStatus = response.data;
+          console.log(response.data);
+          $window.location.href = '/principal.html';
+          //  $scope.showPrincipal();
         }).
-        error(function(response) {
-            $scope.codeStatus = response || "Request failed";
-            console.log("nao foi");
-        }); 
+        error(function (response) {
+          $scope.codeStatus = response || "Request failed";
+          var confirmPopup = $ionicPopup.show({
+            title: "<div class='bar bar-header bar-assertive'> <h1 class='title'>Erro</h1></div>",
+             buttons: [
+                {
+                    text: 'OK'
+                }],
+            template: "<p id='usuarioliberado'>Usuário ou senha incorretos</p>"
+          });
+        });
 
     }
 
