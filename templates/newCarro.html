@@ -9,11 +9,11 @@
       <div class="list">
         <label class="item item-input">
           <span class="input-label">Placa</span>
-          <input type="text">
+          <input type="text" ng-model="Car.Placa">
         </label>
         <label class="item item-input">
           <span class="input-label">Modelo</span>
-          <input type="text">
+          <input type="text" ng-model="Car.Modelo">
         </label>
         
         <div class="list">
@@ -21,11 +21,14 @@
             <div class="input-label">
                Motorista
             </div>
-            <select>
+            <select ng-options="item as item.label for item in items track by item.id" ng-model="selected">
+
+            </select>
+           <!-- <select>
                <option>Henrique Leal</option>
                <option selected>João Cardia</option>
                <option>Breno</option>
-            </select>
+            </select> !-->
            </label>
         </div>
 
