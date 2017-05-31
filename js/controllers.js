@@ -69,11 +69,13 @@ angular.module('starter.controllers', [])
           "nome": $scope.User.nome,
           "cpf": $scope.User.cpf,
           "telefone": $scope.User.telefone,
-          "email": $scope.User.email
+          "email": $scope.User.email,
+          "tipo":$scope.User.tipo
         }
       }).
         success(function (response) {
           $scope.codeStatus = response.data;
+          console.log($scope.User.tipo);
         }).
         error(function (response) {
           $scope.codeStatus = response || "Request failed";

@@ -16,11 +16,7 @@
     $cpf      = $request->cpf;
     $telefone = $request->telefone;
     $email    = $request->email;
-
-    $codigo = 1;
-    $tipousuario = 1;
-
-    //include "connectdb.php";
+    $tipousuario = $request->tipo;
 
     $servername = "localhost";
     $username = "root";
