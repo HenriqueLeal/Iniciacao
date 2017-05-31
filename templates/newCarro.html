@@ -15,14 +15,15 @@
           <span class="input-label">Modelo</span>
           <input type="text" ng-model="Car.Modelo">
         </label>
-        
+
         <div class="list">
           <label class="item item-input item-select">
             <div class="input-label">
                Motorista
             </div>
-            <select ng-options="item as item.label for item in items track by item.id" ng-model="selected">
 
+            <select ng-model="Car.Motorista">
+               <option ng-repeat="x in motorista">{{x}}</option>
             </select>
            <!-- <select>
                <option>Henrique Leal</option>
@@ -35,7 +36,6 @@
       </div>
 
       <button class="button button-full button-royal" type="submit">Salvar</button>
-
     </form>
   </ion-content>
 </ion-modal-view>

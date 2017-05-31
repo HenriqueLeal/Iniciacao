@@ -52,6 +52,16 @@ angular.module('starter.controllers', [])
     };
 
     $scope.newCarro = function () {
+
+      $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
+      $http({
+        url: "http://localhost/EstacionamentoInteligente/www/site/recuperaMotorista.php",
+        method: "GET",
+        headers: "application/x-www-form-urlencoded; charset=UTF-8"
+      }).then(function(response){
+        $scope.motorista = response.data.details;
+      });
+      
       $scope.modalCarro.show();
     }
 
