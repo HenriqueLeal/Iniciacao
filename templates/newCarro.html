@@ -9,11 +9,15 @@
       <div class="list">
         <label class="item item-input">
           <span class="input-label">Placa</span>
-          <input type="text" ng-model="Car.Placa">
+          <input type="text" ng-model="Car.placa" required maxlength="10">
         </label>
         <label class="item item-input">
           <span class="input-label">Modelo</span>
-          <input type="text" ng-model="Car.Modelo">
+          <input type="text" ng-model="Car.modelo" required maxlength="20">
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Montadora</span>
+          <input type="text" ng-model="Car.montadora" required maxlength="20">
         </label>
 
         <div class="list">
@@ -22,14 +26,9 @@
                Motorista
             </div>
 
-            <select ng-model="Car.Motorista">
-               <option ng-repeat="x in motorista">{{x}}</option>
+            <select ng-model="Car.motorista" required>
+               <option ng-repeat="x in motorista" value="{{x.usuario}}">{{x.nome}}</option>
             </select>
-           <!-- <select>
-               <option>Henrique Leal</option>
-               <option selected>João Cardia</option>
-               <option>Breno</option>
-            </select> !-->
            </label>
         </div>
 

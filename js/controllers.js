@@ -51,22 +51,19 @@ angular.module('starter.controllers', [])
       $scope.modal.show();
     };
 
+   //CARREGAMENTO DO COMBO DE CARRO
     $scope.newCarro = function () {
-
       $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
-      $http({
-        url: "http://localhost/EstacionamentoInteligente/www/site/recuperaMotorista.php",
-        method: "GET",
-        headers: "application/x-www-form-urlencoded; charset=UTF-8"
-      }).then(function(response){
+       $http.get("http://localhost/EstacionamentoInteligente/www/site/recuperaMotorista.php").then(function(response){
         $scope.motorista = response.data.details;
+        console.log($scope.motorista);
       });
-      
       $scope.modalCarro.show();
     }
+    //FIM DO CARREGAMENTO DO COMBO DE CARRO
 
+   //CADASTRO DE USUARIO
     $scope.User = {};
-
     $scope.doLogin = function () {
 
       $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
@@ -95,13 +92,40 @@ angular.module('starter.controllers', [])
         $scope.closeLogin();
       }, 200);
     };
+    //FIM DO CADASTRO DE USUARIO
 
+
+    //CADASTRO DE CARROS
+    $scope.Car = {};
     $scope.doCarro = function () {
+     $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
+      $http({
+        url: "http://localhost/EstacionamentoInteligente/www/site/insertCar.php",
+        method: "POST",
+        headers: "application/x-www-form-urlencoded; charset=UTF-8",
+        data: {
+          "placa": $scope.Car.placa,
+          "modelo": $scope.Car.modelo,
+          "motorista": $scope.Car.motorista,
+          "montadora": $scope.Car.montadora
+        }
+      }).
+        success(function (response) {
+          $scope.codeStatus = response.data;
+          console.log($scope.Car.motorista);
+        }).
+        error(function (response) {
+          $scope.codeStatus = response || "Request failed";
+        });
+
       $timeout(function () {
         $scope.closeCarro();
       }, 200);
     };
+    //FIM CADASTRO DE CARROS
 
+
+    //LOGIN
     $scope.Login = {};
     $scope.validaLogin = function () {
 
@@ -133,8 +157,8 @@ angular.module('starter.controllers', [])
             template: "<p id='usuarioliberado'>Usuário ou senha incorretos</p>"
           });
         });
-
     }
+    //FIM DO LOGIN
 
 
   })
