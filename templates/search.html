@@ -9,31 +9,12 @@
        </label>
     </div>
    
-   <div class="list" ng-repeat="u in usuario">
-       <a class="item item-avatar" href="#/app/updUser">
+   <div class="list">
+       <a class="item item-avatar" href="#/app/updUser" collection-repeat="u in usuario">
           <h2>{{u.nome}} - {{u.tipouser}}</h2>
           <p>{{u.modelo}} {{u.placa}}</p>
        </a> 
    </div>
 
-   
-  <!--  <a class="item item-avatar" href="#/app/updUser">
-      <img src="templates/joao.PNG" />
-      <h2>João Cardia - Professor</h2>
-      <p>Chevrolet Onix HHBC-3305</p>
-    </a>
-
-    <a class="item item-avatar" href="#/app/updUser">
-      <img src="templates/henrique.PNG" />
-      <h2>Henrique Leal - Aluno</h2>
-      <p>Hyundai i30 AAQG-1725</p>
-    </a>
-
-    <a class="item item-avatar" href="#/app/updUser">
-      <img src="templates/breno.PNG" />
-      <h2>Breno - Aluno</h2>
-      <p>Bicicleta Aro 18 (SEM PLACA)</p>
-    </a> !-->
-    
   </ion-content>
 </ion-view>
