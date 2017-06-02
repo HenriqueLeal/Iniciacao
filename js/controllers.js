@@ -125,6 +125,18 @@ angular.module('starter.controllers', [])
     //FIM CADASTRO DE CARROS
 
 
+    //PESQUISA USUARIO - search.html
+     $scope.doSearch = function(){
+        console.log("Abriu Pesquisa");
+        $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
+        $http.get("http://localhost/EstacionamentoInteligente/www/site/searchDriver.php").then(function(response){
+            $scope.usuario = response.data.details;
+            console.log($scope.usuario);
+      });
+     };
+    //FIM DA PESQUISA DE USUARIO
+
+
     //LOGIN
     $scope.Login = {};
     $scope.validaLogin = function () {
@@ -163,8 +175,8 @@ angular.module('starter.controllers', [])
 
   })
 
-
-
   .controller('ControllerPrincipal', function ($scope) {
+
+    console.log("abriu search");
   })
 

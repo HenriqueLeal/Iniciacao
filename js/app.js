@@ -55,7 +55,7 @@ angular.module('starter', ['ionic', 'starter.controllers'])
       views: {
         'menuContent': {
           templateUrl: 'templates/telaPrincipal.html',
-          controller: 'ControllerPrincipal'
+          controller: 'AppCtrl'
         }
       }
     })
@@ -65,7 +65,7 @@ angular.module('starter', ['ionic', 'starter.controllers'])
       views: {
         'menuContent': {
           templateUrl: 'templates/report.html',
-          controller: 'ControllerPrincipal'
+          controller: 'AppCtrl'
         }
       }
     })
@@ -75,7 +75,7 @@ angular.module('starter', ['ionic', 'starter.controllers'])
       views: {
         'menuContent': {
           templateUrl: 'templates/updUser.html',
-          controller: 'ControllerPrincipal'
+          controller: 'AppCtrl'
         }
       }
     })
@@ -85,7 +85,7 @@ angular.module('starter', ['ionic', 'starter.controllers'])
       views: {
         'menuContent': {
           templateUrl: 'principal.html',
-          controller: 'ControllerPrincipal'
+          controller: 'AppCtrl'
         }
       }
     })
