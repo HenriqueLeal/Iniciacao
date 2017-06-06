@@ -4,13 +4,12 @@
     <div class="list list-inset">
       <label class="item item-input">
         <i class="icon ion-search placeholder-icon"></i>
-        <input type="text" placeholder="Procurar">
-        <button class="button button-balanced">Procurar</button>
+        <input type="text" placeholder="Procurar" ng-model="nome">
        </label>
     </div>
    
    <div class="list">
-       <a class="item item-avatar" href="#/app/updUser" collection-repeat="u in usuario">
+       <a class="item item-avatar" href="#/app/updUser" ng-repeat="u in usuario | filter: nome ">
           <h2>{{u.nome}} - {{u.tipouser}}</h2>
           <p>{{u.modelo}} {{u.placa}}</p>
        </a> 
