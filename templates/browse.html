@@ -1,13 +1,19 @@
 <ion-view view-title="Liberação da Portaria">
   <ion-content id="liberar">
 
-    <form>
+    <form ng-submit="doCancela()">
+
       <label class="item item-input">
           <span class="input-label">Código do Motorista</span>
-          <input type="number" required>
+          <input type="number" ng-model="Cancela.user" required>
         </label>
-      <button class="button button-full button-royal"
-               ng-click="showAlert()" type="submit">Liberar</button>
+
+         <ion-list>
+            <ion-radio ng-model="Cancela.tipo" ng-value="'E'">Entrada</ion-radio>
+            <ion-radio ng-model="Cancela.tipo" ng-value="'S'">Saída</ion-radio>
+         </ion-list>
+
+         <button class="button button-full button-royal" type="submit">Liberar</button>
     </form>
 
   </ion-content>

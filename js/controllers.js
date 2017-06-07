@@ -2,16 +2,27 @@ angular.module('starter.controllers', [])
 
   .controller('AppCtrl', function ($scope, $stateParams, $state, $ionicModal, $timeout, $ionicPopup, $http, $window) {
 
-    $scope.showAlert = function () {
-      var alertPopup = $ionicPopup.alert({
-        title: "<div class='bar bar-header bar-balanced'> <h1 class='title'>Liberação</h1></div>",
-        template: "<p id='usuarioliberado'>Usuário Liberado!</p>",
-        buttons: [
-          {
-            text: 'OK',
-            type: 'button-royal'
-          }]
-      })
+    $scope.showAlert = function (sucesso) {
+      if (sucesso) {
+         var alertPopup = $ionicPopup.alert({
+                title: "<div class='bar bar-header bar-balanced'> <h1 class='title'>Liberação Confirmada</h1></div>",
+                template: "<p id='usuarioliberado'>Usuário Liberado!</p>",
+                buttons: [{
+                     text: 'OK',
+                     type: 'button-royal'
+                }]
+             }) 
+      }
+      else{
+         var alertPopup = $ionicPopup.alert({
+                title: "<div class='bar bar-header bar-assertive'> <h1 class='title'>Liberação Negada</h1></div>",
+                template: "<p id='usuarioliberado'>Usuário Não Encontrado</p>",
+                buttons: [{
+                     text: 'OK',
+                     type: 'button-royal'
+                }]
+             }) 
+      }
     };
 
     $scope.exclusao = function () {
@@ -95,6 +106,31 @@ angular.module('starter.controllers', [])
     //FIM DO CADASTRO DE USUARIO
 
 
+   //INSERÇÃO DE CANCELA
+    $scope.Cancela = {};
+    $scope.doCancela = function(){
+        $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
+        $http({
+          url: "http://localhost/EstacionamentoInteligente/www/site/liberaPortaria.php",
+           method: "POST",
+           headers: "application/x-www-form-urlencoded; charset=UTF-8",
+           data: {
+              "user": $scope.Cancela.user,
+              "tipo": $scope.Cancela.tipo
+          }
+        }).
+        success(function (response) {
+          console.log(response);
+          if (response == "true") {
+            $scope.showAlert(true);
+          }
+          else{
+             $scope.showAlert(false);
+          }
+        })
+    }
+    //FIM DA INSERÇÃO DE CANCELA
+
     //CADASTRO DE CARROS
     $scope.Car = {};
     $scope.doCarro = function () {
@@ -135,7 +171,6 @@ angular.module('starter.controllers', [])
       });
      };
     //FIM DA PESQUISA DE USUARIO
-
 
     //LOGIN
     $scope.Login = {};

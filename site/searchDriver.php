@@ -21,7 +21,8 @@
                                           TIPOUSUARIO.DESCRICAO
                                    FROM USUARIO
                                    LEFT JOIN CARRO ON CARRO.USUARIO = USUARIO.USUARIO
-                                   LEFT JOIN TIPOUSUARIO ON TIPOUSUARIO.TIPO = USUARIO.TIPOUSUARIO");
+                                   LEFT JOIN TIPOUSUARIO ON TIPOUSUARIO.TIPO = USUARIO.TIPOUSUARIO
+                                   ORDER BY USUARIO.USUARIO");
 
     $outp = "";
 
