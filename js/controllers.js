@@ -104,8 +104,7 @@ angular.module('starter.controllers', [])
       }, 200);
     };
     //FIM DO CADASTRO DE USUARIO
-
-
+    
    //INSERÇÃO DE CANCELA
     $scope.Cancela = {};
     $scope.doCancela = function(){
