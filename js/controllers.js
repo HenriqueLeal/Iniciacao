@@ -108,6 +108,7 @@ angular.module('starter.controllers', [])
    //INSERÇÃO DE CANCELA
     $scope.Cancela = {};
     $scope.doCancela = function(){
+        console.log($scope.Cancela.user);
         $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
         $http({
           url: "http://localhost/EstacionamentoInteligente/www/site/liberaPortaria.php",
@@ -170,6 +171,24 @@ angular.module('starter.controllers', [])
       });
      };
     //FIM DA PESQUISA DE USUARIO
+
+    //RELATÓRIO DE ENTRADA E SAÍDA - report.html
+    $scope.Report = {};
+    $scope.doReport = function(){
+       console.log("Abriu Report");
+        $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
+         $http({
+        url: "http://localhost/EstacionamentoInteligente/www/site/Report.php",
+        method: "POST",
+        headers: "application/x-www-form-urlencoded; charset=UTF-8",
+        data: {
+          "DtInicio": $scope.Report.DtInicio,
+          "DtFim": $scope.Report.DtFim
+        }
+      })
+    }
+
+    //FIM DO RELATÓRIO
 
     //LOGIN
     $scope.Login = {};

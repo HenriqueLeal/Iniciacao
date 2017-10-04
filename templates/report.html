@@ -1,6 +1,23 @@
 <ion-view view-title="Relatório de Entradas e Saídas">
     <ion-content id="liberar">
 
+
+   <form ng-submit="doReport()">
+
+<div class="list">
+            <label class="item item-input item-floating-label">
+    <span class="input-label">Data Início</span>
+    <input type="date" placeholder="Data Início" ng-model="Report.DtInicio">
+  </label>
+            <label class="item item-input item-floating-label">
+    <span class="input-label">Data Fim</span>
+    <input type="date" placeholder="Data Fim" ng-model="Report.DtFim">
+  </label>
+        </div>
+   <button class="button button-outline button-full button-balanced" type="submit">Pesquisar</button>
+   </form>
+        
+
         <div class="list">
 
             <a class="item item-icon-left" href="#">
