@@ -70,6 +70,17 @@ angular.module('starter', ['ionic', 'starter.controllers'])
       }
     })
 
+    .state('app.automatica', {
+      url: '/automatica',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/automatica.html',
+          controller: 'AppCtrl'
+        }
+      }
+    }
+  })
+
     .state('app.updUser', {
       url: '/updUser',
       views: {

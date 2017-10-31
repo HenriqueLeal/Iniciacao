@@ -17,7 +17,7 @@
     $result = mysqli_query($conn, "SELECT DISTINCT USUARIO.USUARIO,
                                           USUARIO.NOME,
                                           CARRO.PLACA,
-                                          CARRO.MODELO,
+                                          COALESCE(CARRO.MODELO, ' - '),
                                           TIPOUSUARIO.DESCRICAO
                                    FROM USUARIO
                                    LEFT JOIN CARRO ON CARRO.USUARIO = USUARIO.USUARIO

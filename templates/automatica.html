@@ -1,0 +1,14 @@
+<ion-view view-title="Portaria Automática">
+  <ion-content id="liberar">
+
+    <form ng-submit="doAutomatica()">
+     
+       <label class="item item-input item-floating-label">
+          <span class="input-label labelindex">URL ARQUIVO</span>
+          <input type="text" placeholder="URL ARQUIVO" ng-model="Automatica.url" required>
+        </label>
+       <button class="button button-full button-royal" type="submit">Verificar</button>
+    </form>
+
+  </ion-content>
+</ion-view>

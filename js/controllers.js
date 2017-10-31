@@ -104,6 +104,33 @@ angular.module('starter.controllers', [])
       }, 200);
     };
     //FIM DO CADASTRO DE USUARIO
+
+    //VERIFICACAO DO ARQUIVO
+      $scope.Automatica = {};
+      $scope.doAutomatica = function(){
+
+         Tesseract.recognize(url).then(function(result) {
+                  $scope.Automatica.placa = result.text;
+                });
+
+       /*  $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
+         $http({
+             url: "http://localhost/EstacionamentoInteligente/www/site/liberaAutomatica.php",
+             method: "POST",
+             headers: "application/x-www-form-urlencoded; charset=UTF-8",
+             data: {
+              "url": $scope.Automatica.placa
+             }
+          }).
+        success(function (response) {
+          $scope.codeStatus = response.data;
+          console.log($scope.User.tipo);
+        }).
+        error(function (response) {
+          $scope.codeStatus = response || "Request failed";
+        });  */       
+    };
+    //FIM DA VERIFICACAO DO ARQUIVO
     
    //INSERÇÃO DE CANCELA
     $scope.Cancela = {};

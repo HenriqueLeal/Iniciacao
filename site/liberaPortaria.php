@@ -19,7 +19,6 @@
     $request  = json_decode($postdata);
     $user     = $request->user;
     $tipo      = $request->tipo;
-    //$data = date("d/m/Y H:i:s "); formato br
     $data  =  date("Y-m-d H:i:s");  
 
     $result = mysqli_query($conn , "SELECT USUARIO.USUARIO FROM USUARIO WHERE USUARIO = '$user'" );
