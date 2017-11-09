@@ -78,7 +78,6 @@ angular.module('starter', ['ionic', 'starter.controllers'])
           controller: 'AppCtrl'
         }
       }
-    }
   })
 
     .state('app.updUser', {
