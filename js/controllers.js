@@ -1,6 +1,7 @@
 angular.module('starter.controllers', [])
 
-.controller('AppCtrl', function ($scope, $stateParams, $state, $ionicModal, $timeout, $ionicPopup, $http, $window) {
+.controller('AppCtrl', function ($scope, $stateParams, $state, $ionicModal, $timeout, $ionicPopup, $http, $window,
+                                 $ionicLoading) {
 
   $scope.showAlert = function (sucesso) {
     if (sucesso) {
@@ -109,6 +110,10 @@ $scope.login = function () {
     $scope.Automatica = {};
     $scope.doAutomatica = function(){
 
+      $ionicLoading.show({
+                        template: 'Reconhecendo Placa...'
+                    });
+
     Tesseract.recognize($scope.Automatica.url).then(function(result) {
       resultado = result.text;
       resultado = resultado.replace("-", "");
@@ -132,6 +137,7 @@ $scope.login = function () {
       else{
        $scope.showAlert(false);
      }
+     $ionicLoading.hide();
    })
 
 
