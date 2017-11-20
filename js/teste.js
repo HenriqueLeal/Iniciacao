@@ -1,1 +1,3 @@
-console.log("funcionou!!!");
+function alerta(){
+	alert("funfou");
+}

@@ -109,10 +109,34 @@ $scope.login = function () {
     $scope.Automatica = {};
     $scope.doAutomatica = function(){
 
-    alert("teste");
+    Tesseract.recognize($scope.Automatica.url).then(function(result) {
+      resultado = result.text;
+      resultado = resultado.replace("-", "");
+      resultado = resultado.replace(".", "");
+
+      $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
+      $http({
+      url: "http://localhost/EstacionamentoInteligente/www/site/liberaAutomatica.php",
+      method: "POST",
+      headers: "application/x-www-form-urlencoded; charset=UTF-8",
+      data: {
+        "placa": resultado
+      }
+   
+   }).
+      success(function (response) {
+      console.log(response);
+      if (response == "true") {
+        $scope.showAlert(true);
+      }
+      else{
+       $scope.showAlert(false);
+     }
+   })
 
 
-   };
+    });
+  }
     //FIM DA VERIFICACAO DO ARQUIVO
     
    //INSERÇÃO DE CANCELA
@@ -197,12 +221,7 @@ $scope.login = function () {
       }
     })
    }
-
     //FIM DO RELATÓRIO
-
-    $scope.init = function(){
-      alert('testeaa');
-    }
 
     //LOGIN
     $scope.Login = {};
