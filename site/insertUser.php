@@ -1,9 +1,4 @@
 <?php
-
- // header('Access-Control-Allow-Origin: *');
- // header('Access-Control-Allow-Headers: X-Requested-With, content-type, access-control-allow-origin, access-control-allow-methods, access-control-allow-headers');
-
-
     header("Access-Control-Allow-Origin: *");
     header("Access-Control-Allow-Credentials: true");
     header("Access-Control-Allow-Methods: POST, GET, OPTIONS");
@@ -18,15 +13,7 @@
     $email    = $request->email;
     $tipousuario = $request->tipo;
 
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "estacionamentointeligente";
-
-    $conn = new mysqli($servername, $username, $password, $dbname);
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
+    require("connectdb.php");
 
     $sqlID = "SELECT MAX(USUARIO) AS USUARIO FROM USUARIO";
     $exeSQLID = mysqli_query($conn, $sqlID);

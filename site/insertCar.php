@@ -4,6 +4,7 @@
     header("Access-Control-Allow-Methods: POST, GET, OPTIONS");
     header("Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With");
 
+    require("connectdb.php");
 
     $postdata = file_get_contents("php://input");
     $request  = json_decode($postdata);
@@ -11,16 +12,6 @@
     $modelo      = $request->modelo;
     $motorista = $request->motorista;
     $montadora = $request->montadora;
-
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "estacionamentointeligente";
-
-    $conn = new mysqli($servername, $username, $password, $dbname);
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
 
     $sqlID = "SELECT MAX(CARRO) AS CARRO FROM CARRO";
     $exeSQLID = mysqli_query($conn, $sqlID);

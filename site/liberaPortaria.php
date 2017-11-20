@@ -5,15 +5,7 @@
     header("Access-Control-Allow-Methods: POST, GET, OPTIONS");
     header("Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With");
 
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "estacionamentointeligente";
-
-    $conn = new mysqli($servername, $username, $password, $dbname);
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
+     require("connectdb.php");
 
     $postdata = file_get_contents("php://input");
     $request  = json_decode($postdata);
