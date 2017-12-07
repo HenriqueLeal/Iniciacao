@@ -1,7 +1,7 @@
 angular.module('starter.controllers', [])
 
 .controller('AppCtrl', function ($scope, $stateParams, $state, $ionicModal, $timeout, $ionicPopup, $http, $window,
-                                 $ionicLoading) {
+ $ionicLoading) {
 
   $scope.showAlert = function (sucesso) {
     if (sucesso) {
@@ -111,44 +111,58 @@ $scope.login = function () {
     $scope.doAutomatica = function(){
 
       $ionicLoading.show({
-                        template: 'Reconhecendo Placa...'
-                    });
+        template: 'Validando Placa <br /><br /><ion-spinner icon="spiral"></ion-spinner>'
+      });
 
-    Tesseract.recognize($scope.Automatica.url).then(function(result) {
-      resultado = result.text;
-      resultado = resultado.replace("-", "");
-      resultado = resultado.replace(".", "");
+      var img = new Image();
+      img.src = $scope.Automatica.url;
+      img.onload = function() {
+        Tesseract.recognize($scope.Automatica.url).then(function(result) {
+          resultado = result.text;
+          resultado = resultado.replace("-", "");
+          resultado = resultado.replace(".", "");
 
-      $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
-      $http({
-      url: "http://localhost/EstacionamentoInteligente/www/site/liberaAutomatica.php",
-      method: "POST",
-      headers: "application/x-www-form-urlencoded; charset=UTF-8",
-      data: {
-        "placa": resultado
+          $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
+          $http({
+            url: "http://localhost/EstacionamentoInteligente/www/site/liberaAutomatica.php",
+            method: "POST",
+            headers: "application/x-www-form-urlencoded; charset=UTF-8",
+            data: {
+              "placa": resultado
+            }
+
+          }).
+          success(function (response) {
+            console.log(resultado);
+            if (response == "true") {
+              $scope.showAlert(true);
+            }
+            else{
+             $scope.showAlert(false);
+           }
+           $ionicLoading.hide();
+         })
+
+
+        });
       }
-   
-   }).
-      success(function (response) {
-      console.log(response);
-      if (response == "true") {
-        $scope.showAlert(true);
+      img.onerror = function() {
+        var alertPopup = $ionicPopup.alert({
+          title: "<div class='bar bar-header bar-assertive'> <h1 class='title'>Liberação Negada</h1></div>",
+          template: "<p id='usuarioliberado'>Não é uma imagem válida</p>",
+          buttons: [{
+           text: 'OK',
+           type: 'button-royal'
+         }]
+       })  
+        $ionicLoading.hide();
       }
-      else{
-       $scope.showAlert(false);
-     }
-     $ionicLoading.hide();
-   })
-
-
-    });
-  }
+    }
     //FIM DA VERIFICACAO DO ARQUIVO
     
    //INSERÇÃO DE CANCELA
    $scope.Cancela = {};
    $scope.doCancela = function(){
-    console.log($scope.Cancela.user);
     $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
     $http({
       url: "http://localhost/EstacionamentoInteligente/www/site/liberaPortaria.php",
@@ -215,7 +229,6 @@ $scope.login = function () {
     //RELATÓRIO DE ENTRADA E SAÍDA - report.html
     $scope.Report = {};
     $scope.doReport = function(){
-     console.log("Abriu Report");
      $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
      $http({
       url: "http://localhost/EstacionamentoInteligente/www/site/Report.php",
@@ -269,6 +282,5 @@ $scope.login = function () {
 
 .controller('ControllerPrincipal', function ($scope) {
 
-  console.log("abriu search");
 })
 
