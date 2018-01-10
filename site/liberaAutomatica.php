@@ -40,7 +40,7 @@ if ($num_rows > 0) {
 	$details = "true";
 
 	$sock = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
-    socket_connect($sock,"192.168.0.21", 8080); 
+    socket_connect($sock,"10.66.41.127", 8080); 
     socket_write($sock,'a'); 
     socket_close($sock); 
 }
